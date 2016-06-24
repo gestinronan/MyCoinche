@@ -7,4 +7,6 @@ import lombok.Data;
  */
 @Data
 public class Score {
+    int scoreManche;
+    int scorePartie;
 }

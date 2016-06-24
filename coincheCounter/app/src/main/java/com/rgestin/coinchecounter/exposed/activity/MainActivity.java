@@ -5,6 +5,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.rgestin.coinchecounter.R;
+import com.rgestin.coinchecounter.connector.Score;
 import com.rgestin.coinchecounter.exposed.adapter.ScoreTeamAdapter;
 
 import org.androidannotations.annotations.AfterViews;
@@ -30,15 +31,19 @@ public class MainActivity extends AppCompatActivity {
 
     @AfterViews
     void afterView(){
-
-
-        //TODO init list
-
+        mListViewTeam1.setAdapter(team1Adapter);
+        mListViewTeam2.setAdapter(team2Adapter);
     }
 
 
     @Click(R.id.addScore)
     void clickAddScore(){
-
+        Score score = new Score();
+        score.setScoreManche(100);
+        score.setScorePartie(200);
+        team1Adapter.setData(score);
+        team2Adapter.setData(score);
+        team1Adapter.notifyDataSetChanged();
+        team2Adapter.notifyDataSetChanged();
     }
 }

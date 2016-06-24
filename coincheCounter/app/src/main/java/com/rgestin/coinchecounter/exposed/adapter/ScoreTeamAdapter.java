@@ -7,6 +7,7 @@ import android.widget.BaseAdapter;
 
 import com.rgestin.coinchecounter.connector.Score;
 import com.rgestin.coinchecounter.exposed.adapter.view.ScoreView;
+import com.rgestin.coinchecounter.exposed.adapter.view.ScoreView_;
 
 import org.androidannotations.annotations.AfterInject;
 import org.androidannotations.annotations.EBean;
@@ -32,8 +33,8 @@ public class ScoreTeamAdapter extends BaseAdapter {
     }
 
 
-    public void setDatas(final List<Score> scoreList) {
-        mScoreList = scoreList;
+    public void setData(final Score score) {
+        mScoreList.add(score);
     }
 
     @Override
@@ -42,18 +43,26 @@ public class ScoreTeamAdapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(final int i) {
-        return mScoreList.get(i);
+    public Score getItem(final int position) {
+        return mScoreList.get(position);
     }
 
     @Override
-    public long getItemId(final int i) {
-        return i;
+    public long getItemId(final int position) {
+        return position;
     }
 
     @Override
-    public View getView(final int i, final View view, final ViewGroup viewGroup) {
-        ScoreView
-        return null;
+    public View getView(final int position, final View view, final ViewGroup viewGroup) {
+        ScoreView scoreView;
+
+        if (view == null) {
+            scoreView = ScoreView_.build(context);
+        } else {
+            scoreView = (ScoreView) view;
+        }
+
+        scoreView.bind(getItem(position));
+        return scoreView;
     }
 }

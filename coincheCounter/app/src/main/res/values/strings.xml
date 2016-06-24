@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">coincheCounter</string>
+    <string name="title_main">Counter</string>
+    <string name="add_button">add</string>
 </resources>

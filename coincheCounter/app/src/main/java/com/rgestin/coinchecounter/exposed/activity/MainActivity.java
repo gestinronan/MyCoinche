@@ -7,6 +7,8 @@ import android.widget.ListView;
 import com.rgestin.coinchecounter.R;
 import com.rgestin.coinchecounter.connector.Score;
 import com.rgestin.coinchecounter.exposed.adapter.ScoreTeamAdapter;
+import com.rgestin.coinchecounter.exposed.dialog.AddScoreDialog;
+import com.rgestin.coinchecounter.exposed.dialog.AddScoreDialog_;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
@@ -38,12 +40,30 @@ public class MainActivity extends AppCompatActivity {
 
     @Click(R.id.addScore)
     void clickAddScore(){
-        Score score = new Score();
-        score.setScoreManche(100);
-        score.setScorePartie(200);
-        team1Adapter.setData(score);
-        team2Adapter.setData(score);
-        team1Adapter.notifyDataSetChanged();
-        team2Adapter.notifyDataSetChanged();
+        AddScoreDialog build = AddScoreDialog_.builder()
+                .mOnConfirmScoreListener(new AddScoreDialog.OnConfirmScoreListener() {
+                                             @Override
+                                             public void socre(int team1, int team2) {
+                                                 Score score1 = new Score();
+                                                 score1.setScoreManche(team1);
+                                                 int team1AdapterItem = team1Adapter.getCount()>0?team1Adapter.getItem(team1Adapter.getCount()-1).getScorePartie():0;
+                                                 score1.setScorePartie(team1+ team1AdapterItem);
+                                                 team1Adapter.setData(score1);
+
+                                                 Score score2 = new Score();
+                                                 score2.setScoreManche(team2);
+                                                 int team2AdapterItem = team2Adapter.getCount()>0?team2Adapter.getItem(team2Adapter.getCount()-1).getScorePartie():0;
+                                                 score2.setScorePartie(team2+ team2AdapterItem);
+                                                 team2Adapter.setData(score2);
+
+                                                 team1Adapter.notifyDataSetChanged();
+                                                 team2Adapter.notifyDataSetChanged();
+                                             }
+                                         }
+                )
+                .build();
+
+        build.show(getSupportFragmentManager(), "ClickAddScore");
+
     }
 }

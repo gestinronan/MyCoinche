@@ -45,7 +45,13 @@ dependencies {
     apt "org.androidannotations:androidannotations:$AAVersion"
     compile "org.androidannotations:androidannotations-api:$AAVersion"
 
+    apt "org.androidannotations:ormlite:$AAVersion"
+    compile "org.androidannotations:ormlite:$AAVersion"
+
     // lombok annotations
     provided "org.projectlombok:lombok:1.12.6"
     apt "org.projectlombok:lombok:1.12.6"
+
+    compile "com.j256.ormlite:ormlite-core:4.48"
+    compile "com.j256.ormlite:ormlite-android:4.48"
 }

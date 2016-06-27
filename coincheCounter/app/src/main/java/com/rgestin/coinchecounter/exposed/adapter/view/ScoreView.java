@@ -6,7 +6,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.rgestin.coinchecounter.R;
-import com.rgestin.coinchecounter.connector.Score;
+import com.rgestin.coinchecounter.connector.model.Score;
 
 import org.androidannotations.annotations.EViewGroup;
 import org.androidannotations.annotations.ViewById;

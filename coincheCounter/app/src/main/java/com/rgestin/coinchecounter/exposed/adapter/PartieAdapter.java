@@ -5,9 +5,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-import com.rgestin.coinchecounter.connector.model.Score;
-import com.rgestin.coinchecounter.exposed.adapter.view.ScoreView;
-import com.rgestin.coinchecounter.exposed.adapter.view.ScoreView_;
+import com.rgestin.coinchecounter.connector.model.Partie;
+import com.rgestin.coinchecounter.exposed.adapter.view.PartieView;
+import com.rgestin.coinchecounter.exposed.adapter.view.PartieView_;
 
 import org.androidannotations.annotations.AfterInject;
 import org.androidannotations.annotations.EBean;
@@ -17,34 +17,33 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Ronan GESTIN on 24/06/2016.
+ * Created by Ronan GESTIN on 27/06/2016.
  */
 @EBean
-public class ScoreTeamAdapter extends BaseAdapter {
+public class PartieAdapter extends BaseAdapter {
 
     @RootContext
     protected Context context;
 
-    List<Score> mScoreList = new ArrayList<>();
+    List<Partie> mPartieList = new ArrayList<>();
 
     @AfterInject
     void initData() {
-        mScoreList = new ArrayList<>();
+        mPartieList = new ArrayList<>();
     }
 
-
-    public void setData(final Score score) {
-        mScoreList.add(score);
+    public void setData(List<Partie> parties){
+        mPartieList = parties;
+        notifyDataSetChanged();
     }
-
     @Override
     public int getCount() {
-        return mScoreList.size();
+        return mPartieList.size();
     }
 
     @Override
-    public Score getItem(final int position) {
-        return mScoreList.get(position);
+    public Partie getItem(final int position) {
+        return mPartieList.get(position);
     }
 
     @Override
@@ -54,15 +53,15 @@ public class ScoreTeamAdapter extends BaseAdapter {
 
     @Override
     public View getView(final int position, final View view, final ViewGroup viewGroup) {
-        ScoreView scoreView;
+        PartieView partieView;
 
         if (view == null) {
-            scoreView = ScoreView_.build(context);
+            partieView = PartieView_.build(context);
         } else {
-            scoreView = (ScoreView) view;
+            partieView = (PartieView) view;
         }
 
-        scoreView.bind(getItem(position));
-        return scoreView;
+        partieView.bind(getItem(position));
+        return partieView;
     }
 }

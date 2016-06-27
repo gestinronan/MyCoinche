@@ -5,7 +5,8 @@ import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.rgestin.coinchecounter.R;
-import com.rgestin.coinchecounter.connector.Score;
+import com.rgestin.coinchecounter.connector.model.Partie;
+import com.rgestin.coinchecounter.connector.model.Score;
 import com.rgestin.coinchecounter.exposed.adapter.ScoreTeamAdapter;
 import com.rgestin.coinchecounter.exposed.dialog.AddScoreDialog;
 import com.rgestin.coinchecounter.exposed.dialog.AddScoreDialog_;
@@ -14,10 +15,11 @@ import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.Extra;
 import org.androidannotations.annotations.ViewById;
 
 @EActivity(R.layout.activity_main)
-public class MainActivity extends AppCompatActivity {
+public class ScoreActivity extends AppCompatActivity {
 
     @ViewById(R.id.scoreTeam1)
     ListView mListViewTeam1;
@@ -29,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
     ScoreTeamAdapter team1Adapter;
     @Bean
     ScoreTeamAdapter team2Adapter;
+    @Extra
+    Partie mPartie;
 
 
     @AfterViews

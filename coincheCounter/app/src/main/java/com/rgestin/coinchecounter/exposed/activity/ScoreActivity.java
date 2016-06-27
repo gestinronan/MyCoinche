@@ -10,6 +10,10 @@ import com.rgestin.coinchecounter.connector.model.Score;
 import com.rgestin.coinchecounter.exposed.adapter.ScoreTeamAdapter;
 import com.rgestin.coinchecounter.exposed.dialog.AddScoreDialog;
 import com.rgestin.coinchecounter.exposed.dialog.AddScoreDialog_;
+import com.rgestin.coinchecounter.service.ScoreService;
+import com.rgestin.coinchecounter.service.impl.PartieSerivceImpl;
+import com.rgestin.coinchecounter.service.impl.ScoreServiceImpl;
+import com.rgestin.coinchecounter.service.impl.TeamServiceImpl;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
@@ -31,6 +35,10 @@ public class ScoreActivity extends AppCompatActivity {
     ScoreTeamAdapter team1Adapter;
     @Bean
     ScoreTeamAdapter team2Adapter;
+    @Bean
+    ScoreServiceImpl scoreService;
+    @Bean
+    TeamServiceImpl teamService;
     @Extra
     Partie mPartie;
 

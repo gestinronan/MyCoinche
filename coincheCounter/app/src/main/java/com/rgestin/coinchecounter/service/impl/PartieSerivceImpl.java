@@ -24,7 +24,7 @@ import java.util.List;
 @EBean
 public class PartieSerivceImpl implements PartieService {
 
-    private static final String TAG = "TAG";
+    private static final String TAG = PartieSerivceImpl.class.getSimpleName();
 
     @RootContext
     protected Context context;

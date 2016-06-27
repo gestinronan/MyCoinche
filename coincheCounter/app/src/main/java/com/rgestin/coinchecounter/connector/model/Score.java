@@ -28,5 +28,5 @@ public class Score implements Serializable {
     int scorePartie;
 
     @DatabaseField(dataType = DataType.SERIALIZABLE, columnName = TABLE_SCORE_TEAM, foreign = true, foreignAutoRefresh = true)
-    Team partie;
+    Team team;
 }

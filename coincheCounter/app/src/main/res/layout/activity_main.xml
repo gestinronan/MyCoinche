@@ -31,23 +31,69 @@
         android:layout_height="match_parent"
         android:orientation="horizontal"
         android:weightSum="2">
-
-        <ListView
-            android:id="@+id/scoreTeam1"
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/team1_name_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/title_style"
+                tools:text="test"/>
+        <ListView
+            android:id="@+id/scoreTeam1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/team1_score_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/title_style"
+                tools:text="test"
+                android:layout_margin="12dp"
+                android:textColor="@color/red"
+                android:layout_gravity="bottom"/>
+        </LinearLayout>
 
         <View
             android:layout_width="1dp"
             android:layout_height="match_parent"
             android:background="@android:color/black"/>
 
-        <ListView
-            android:id="@+id/scoreTeam2"
+
+
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/team2_name_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/title_style"
+                tools:text="test"/>
+            <ListView
+                android:id="@+id/scoreTeam2"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/team2_score_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/title_style"
+                tools:text="test"
+                android:layout_margin="12dp"
+                android:textColor="@color/red"
+                android:layout_gravity="bottom"/>
+        </LinearLayout>
+
 
     </LinearLayout>
 </LinearLayout>

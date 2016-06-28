@@ -37,6 +37,9 @@ public class ScoreTeamAdapter extends BaseAdapter {
         mScoreList.add(score);
     }
 
+    public void setDatas(final List<Score> scores) {
+        mScoreList =scores;
+    }
     @Override
     public int getCount() {
         return mScoreList.size();

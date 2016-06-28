@@ -2,7 +2,7 @@
     <string name="app_name">coincheCounter</string>
     <string name="title_main">Counter</string>
     <string name="add_button">add</string>
-    <string name="scoreDisplay">Score de la manche : %1$d \n score de la partie: %2$d .</string>
+    <string name="scoreDisplay"> %1$d</string>
     <string name="form_score_team1">Score Team 1</string>
     <string name="form_score_team2">Score Team 2</string>
     <string name="add_score">Ajouter les scores</string>
@@ -10,4 +10,6 @@
     <string name="nouvelle_partie">Nouvelle partie</string>
     <string name="form_partie">Nom de la partie</string>
     <string name="add_partie">Créer la partie</string>
+    <string name="form_team1">Nom de l\'équipe 1</string>
+    <string name="form_team2">Nom de l\'équipe 2</string>
 </resources>

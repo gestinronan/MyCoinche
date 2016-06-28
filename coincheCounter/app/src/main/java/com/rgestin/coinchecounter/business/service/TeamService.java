@@ -1,4 +1,4 @@
-package com.rgestin.coinchecounter.service;
+package com.rgestin.coinchecounter.business.service;
 
 import com.rgestin.coinchecounter.connector.model.Partie;
 import com.rgestin.coinchecounter.connector.model.Team;
@@ -8,5 +8,5 @@ import com.rgestin.coinchecounter.connector.model.Team;
  */
 public interface TeamService {
 
-    Team createTeam(Partie partie);
+    Team createTeam(Partie partie, String name);
 }

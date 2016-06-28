@@ -5,11 +5,12 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.rgestin.coinchecounter.R;
+import com.rgestin.coinchecounter.business.service.impl.PartieSerivceImpl;
+import com.rgestin.coinchecounter.business.service.impl.TeamServiceImpl;
 import com.rgestin.coinchecounter.connector.model.Partie;
 import com.rgestin.coinchecounter.exposed.adapter.PartieAdapter;
-import com.rgestin.coinchecounter.exposed.dialog.PartieScoreDialog;
-import com.rgestin.coinchecounter.exposed.dialog.PartieScoreDialog_;
-import com.rgestin.coinchecounter.service.impl.PartieSerivceImpl;
+import com.rgestin.coinchecounter.exposed.dialog.CreatePartieDialog;
+import com.rgestin.coinchecounter.exposed.dialog.CreatePartieDialog_;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Background;
@@ -20,7 +21,6 @@ import org.androidannotations.annotations.ItemClick;
 import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -36,7 +36,8 @@ public class ListPartieActivity extends AppCompatActivity {
     PartieAdapter mPartieAdapter;
     @Bean
     PartieSerivceImpl partieSerivce;
-
+    @Bean
+    TeamServiceImpl mTeamService;
 
     @AfterViews
     void afterView(){
@@ -63,14 +64,17 @@ public class ListPartieActivity extends AppCompatActivity {
 
     @Click(R.id.nouvelle_partie)
     void nouvellePartie(){
-        PartieScoreDialog build = PartieScoreDialog_.builder()
-                .onConfirmPartieListener(new PartieScoreDialog.OnConfirmPartieListener() {
+        CreatePartieDialog build = CreatePartieDialog_.builder()
+                .onConfirmPartieListener(new CreatePartieDialog.OnConfirmPartieListener() {
                     @Override
-                    public void partie(String name) {
+                    public void partie(String name, String team1, String team2) {
                         Partie createpratie = partieSerivce.createpratie(name);
                         if(createpratie != null){
+                             mTeamService.createTeam(createpratie, team1);
+                             mTeamService.createTeam(createpratie, team2);
+
                             ScoreActivity_.intent(ListPartieActivity.this)
-                                    .mPartie(createpratie)
+                                    .mPartieId(createpratie.getId())
                                     .start();
                         }else{
                             Toast.makeText(ListPartieActivity.this, "Erreur lors de la creations de la partie", Toast.LENGTH_LONG).show();
@@ -84,7 +88,7 @@ public class ListPartieActivity extends AppCompatActivity {
     @ItemClick(R.id.list_partie)
     void startScoreView(Partie partieChoose){
         ScoreActivity_.intent(this)
-                .mPartie(partieChoose)
+                .mPartieId(partieChoose.getId())
                 .start();
     }
 }

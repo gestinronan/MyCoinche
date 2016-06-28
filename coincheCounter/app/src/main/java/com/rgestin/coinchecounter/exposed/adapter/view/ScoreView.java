@@ -29,6 +29,6 @@ public class ScoreView extends LinearLayout{
 
 
     public void bind(@NonNull final Score score) {
-        scoreTV.setText(mContext.getString(R.string.scoreDisplay, score.getScoreManche(), score.getScorePartie()));
+        scoreTV.setText(mContext.getString(R.string.scoreDisplay, score.getScoreManche()));
     }
 }

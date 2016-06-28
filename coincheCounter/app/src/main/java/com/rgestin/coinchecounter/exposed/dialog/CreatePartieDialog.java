@@ -18,11 +18,18 @@ import java.io.Serializable;
  * Created by ronan GESTIN on 25/06/2016.
  */
 @EFragment(R.layout.dialog_add_partie)
-public class PartieScoreDialog extends DialogFragment {
+public class CreatePartieDialog extends DialogFragment {
 
     @ViewById(R.id.partie_name_dialog)
     TextInputLayout partieName;
 
+
+    @ViewById(R.id.team1_name_dialog)
+    TextInputLayout team1Name;
+
+
+    @ViewById(R.id.team2_name_dialog)
+    TextInputLayout team2Name;
 
     @FragmentArg
     OnConfirmPartieListener onConfirmPartieListener;
@@ -30,12 +37,18 @@ public class PartieScoreDialog extends DialogFragment {
 
     @Click
     public void confirmButtonClicked() {
-        EditText editTeam1 = partieName.getEditText();
-        if (editTeam1 != null) {
+        EditText editPartieName = partieName.getEditText();
+        EditText editTeam1Name = team1Name.getEditText();
+        EditText editTeam2Name = team2Name.getEditText();
 
-            String name = editTeam1.getText().toString();
 
-            onConfirmPartieListener.partie(name);
+        if (editPartieName != null && editTeam1Name != null && editTeam2Name != null ) {
+
+            String name = editPartieName.getText().toString();
+            String team1name = editTeam1Name.getText().toString();
+            String team2name = editTeam2Name.getText().toString();
+
+            onConfirmPartieListener.partie(name, team1name, team2name);
 
         }
         dismiss();
@@ -49,6 +62,6 @@ public class PartieScoreDialog extends DialogFragment {
 
     public interface OnConfirmPartieListener extends Serializable{
 
-        void partie(String name);
+        void partie(String name, String team1Name, String team2Name);
     }
 }

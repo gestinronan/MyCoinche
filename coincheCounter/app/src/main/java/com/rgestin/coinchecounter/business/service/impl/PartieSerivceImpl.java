@@ -1,4 +1,4 @@
-package com.rgestin.coinchecounter.service.impl;
+package com.rgestin.coinchecounter.business.service.impl;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -8,7 +8,7 @@ import com.j256.ormlite.dao.Dao;
 import com.rgestin.coinchecounter.connector.DbHelper;
 import com.rgestin.coinchecounter.connector.model.Partie;
 import com.rgestin.coinchecounter.connector.model.Team;
-import com.rgestin.coinchecounter.service.PartieService;
+import com.rgestin.coinchecounter.business.service.PartieService;
 
 import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.RootContext;
@@ -66,6 +66,25 @@ public class PartieSerivceImpl implements PartieService {
         } catch (SQLException e) {
             Log.e(TAG, "GET ALL PARTIE ERROR", e);
             return new ArrayList<>();
+        }
+    }
+
+    @Override
+    public void updatePartie(final Partie parite) {
+        try {
+            partieDao.update(parite);
+        } catch (SQLException e) {
+            Log.e(TAG, "UPDATE PARTIE ERROR", e);
+        }
+    }
+
+    @Override
+    public Partie getPartie(final Long id) {
+        try {
+            return partieDao.queryForId(id);
+        } catch (SQLException e) {
+            Log.e(TAG, "GET id PARTIE ERROR", e);
+            return  null;
         }
     }
 }

@@ -1,13 +1,14 @@
-package com.rgestin.coinchecounter.service.impl;
+package com.rgestin.coinchecounter.business.service.impl;
 
 import android.content.Context;
 import android.util.Log;
 
 import com.j256.ormlite.dao.Dao;
+import com.rgestin.coinchecounter.business.service.ScoreService;
 import com.rgestin.coinchecounter.connector.DbHelper;
 import com.rgestin.coinchecounter.connector.model.Score;
 import com.rgestin.coinchecounter.connector.model.Team;
-import com.rgestin.coinchecounter.service.ScoreService;
+
 
 import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.RootContext;

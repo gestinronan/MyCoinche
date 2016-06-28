@@ -1,4 +1,4 @@
-package com.rgestin.coinchecounter.service;
+package com.rgestin.coinchecounter.business.service;
 
 import android.support.annotation.NonNull;
 
@@ -17,5 +17,9 @@ public interface PartieService {
     Partie createpratie(@NonNull String name);
 
     List<Partie> getAllPartie();
+
+    void updatePartie(Partie parite);
+
+    Partie getPartie(Long id);
 
 }
